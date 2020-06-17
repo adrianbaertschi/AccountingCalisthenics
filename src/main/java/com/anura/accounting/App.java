@@ -1,4 +1,4 @@
-package com.bilgin.accounting;
+package com.anura.accounting;
 
 public class App {
     public static void main(String[] args) {

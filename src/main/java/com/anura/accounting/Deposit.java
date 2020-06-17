@@ -1,4 +1,4 @@
-package com.bilgin.accounting;
+package com.anura.accounting;
 
 public class Deposit implements Transaction {
 
