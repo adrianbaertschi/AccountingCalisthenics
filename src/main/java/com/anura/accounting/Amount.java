@@ -9,6 +9,7 @@ public class Amount {
         this.cents = cents;
     }
 
+    @SuppressWarnings("UnnecessaryLocalVariable")
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -30,5 +31,9 @@ public class Amount {
 
     public Amount add(Amount amount) {
         return new Amount(cents + amount.cents);
+    }
+
+    public Amount negate() {
+        return new Amount(-cents);
     }
 }

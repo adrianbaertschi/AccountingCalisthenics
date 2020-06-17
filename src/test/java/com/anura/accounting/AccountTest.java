@@ -38,4 +38,15 @@ public class AccountTest {
                 "---------------Total Balance----------------\n" +
                         "Amount: $12"));
     }
+
+    @Test
+    public void testWithdrawalCanBeDoneForAnAccount() {
+        Account account = new Account(new TestingPrinter());
+
+        account.depositMoney(new Deposit(new Amount(1200)));
+        account.depositMoney(new Deposit(new Amount(700)));
+        account.withdrawMoney(new Withdrawal(new Amount(400)));
+
+        assertEquals(new Amount(1500), account.getBalance());
+    }
 }

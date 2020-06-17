@@ -15,6 +15,10 @@ public class Account {
         transactions.add(deposit);
     }
 
+    public void withdrawMoney(Withdrawal withdrawal) {
+        transactions.add(withdrawal);
+    }
+
     public Amount getBalance() {
         Amount finalAmount = new Amount(0);
         for (Transaction transaction : transactions) {
