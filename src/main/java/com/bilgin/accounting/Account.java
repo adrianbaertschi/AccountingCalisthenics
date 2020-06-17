@@ -1,15 +1,26 @@
 package com.bilgin.accounting;
 
-public class Account {
-    private final AccountNumber accountNumber;
-    private final Printer printer;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Account(AccountNumber accountNumber, Printer printer) {
-        this.accountNumber = accountNumber;
+public class Account {
+    private final Printer printer;
+    private final List<Transaction> transactions = new ArrayList<>();
+
+    public Account(Printer printer) {
         this.printer = printer;
     }
 
-    public void printAccountNumber() {
-        printer.print(accountNumber);
+    public void depositMoney(Deposit deposit) {
+        transactions.add(deposit);
+    }
+
+
+    public Amount getBalance() {
+        Amount finalAmount = new Amount(0);
+        for (Transaction transaction : transactions) {
+            finalAmount = transaction.execute(finalAmount);
+        }
+        return finalAmount;
     }
 }

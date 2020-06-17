@@ -21,7 +21,8 @@ public class Line {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Line line = (Line) o;
-        return value.equals(line.value);
+        String lineValue = line.value;
+        return value.equals(lineValue);
     }
 
     @Override
