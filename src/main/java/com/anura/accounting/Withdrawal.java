@@ -12,4 +12,9 @@ public class Withdrawal implements Transaction {
         Amount negativeAmount = amount.negate();
         return balance.add(negativeAmount);
     }
+
+    @Override
+    public void print(Printer printer) {
+        printer.print(new Line("---------------Withdraw " + amount + " : OK----------------"));
+    }
 }

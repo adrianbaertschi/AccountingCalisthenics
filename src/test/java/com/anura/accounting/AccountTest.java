@@ -49,4 +49,21 @@ public class AccountTest {
 
         assertEquals(new Amount(1500), account.getBalance());
     }
+
+    @Test
+    public void testprintTransactions() {
+        TestingPrinter printer = new TestingPrinter();
+        Account account = new Account(printer);
+
+        account.depositMoney(new Deposit(new Amount(1200)));
+        account.depositMoney(new Deposit(new Amount(700)));
+        account.withdrawMoney(new Withdrawal(new Amount(400)));
+        account.printTransactions();
+
+        printer.assertHasLines(new Lines(
+                        "---------------Transactions----------------\n" +
+                        "---------------Deposit 12 : OK----------------\n" +
+                        "---------------Deposit 7 : OK----------------\n" +
+                        "---------------Withdraw 4 : OK----------------\n"));
+    }
 }

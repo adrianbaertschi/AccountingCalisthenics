@@ -31,4 +31,11 @@ public class Account {
         printer.print(new Line("---------------Total Balance----------------"));
         printer.print(new Line("Amount: $" + getBalance()));
     }
+
+    public void printTransactions() {
+        printer.print(new Line("---------------Transactions----------------"));
+        for (Transaction transaction : transactions) {
+            transaction.print(printer);
+        }
+    }
 }
