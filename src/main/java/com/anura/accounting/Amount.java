@@ -25,9 +25,7 @@ public class Amount {
 
     @Override
     public String toString() {
-        return "Amount{" +
-                "cents=" + cents +
-                '}';
+        return String.valueOf(cents / 100);
     }
 
     public Amount add(Amount amount) {

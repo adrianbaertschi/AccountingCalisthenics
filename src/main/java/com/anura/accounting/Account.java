@@ -15,12 +15,16 @@ public class Account {
         transactions.add(deposit);
     }
 
-
     public Amount getBalance() {
         Amount finalAmount = new Amount(0);
         for (Transaction transaction : transactions) {
             finalAmount = transaction.execute(finalAmount);
         }
         return finalAmount;
+    }
+
+    public void printBalance() {
+        printer.print(new Line("---------------Total Balance----------------"));
+        printer.print(new Line("Amount: $" + getBalance()));
     }
 }
