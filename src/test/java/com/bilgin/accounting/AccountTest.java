@@ -11,8 +11,8 @@ public class AccountTest {
         TestingPrinter printer = new TestingPrinter();
         Account account = new Account(new AccountNumber("123"), printer);
         account.printAccountNumber();
-
-        assertEquals("Account 123", printer.lineOne().toString());
+        Line expectedLine = new Line(new AccountNumber("123").toString());
+        assertEquals(expectedLine, printer.lineOne());
     }
 
 }
