@@ -36,4 +36,15 @@ public class Amount {
     public Amount negate() {
         return new Amount(-cents);
     }
+
+    public Balance toBalance() {
+        return new Balance(cents);
+    }
+
+    public void ifGreaterThan(Amount otherAmount, Runnable lambda) {
+        if (cents > otherAmount.cents) {
+            lambda.run();
+        }
+    }
+
 }

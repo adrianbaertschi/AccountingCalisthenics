@@ -12,7 +12,7 @@ public class AccountTest {
 
         account.depositMoney(new Deposit(new Amount(1200)));
 
-        assertEquals(new Amount(1200), account.getBalance());
+        assertEquals(new Balance(1200), account.getBalance());
     }
 
     @Test
@@ -22,7 +22,7 @@ public class AccountTest {
         account.depositMoney(new Deposit(new Amount(1200)));
         account.depositMoney(new Deposit(new Amount(700)));
 
-        assertEquals(new Amount(1900), account.getBalance());
+        assertEquals(new Balance(1900), account.getBalance());
     }
 
     @Test
@@ -47,7 +47,7 @@ public class AccountTest {
         account.depositMoney(new Deposit(new Amount(700)));
         account.withdrawMoney(new Withdrawal(new Amount(400)));
 
-        assertEquals(new Amount(1500), account.getBalance());
+        assertEquals(new Balance(1500), account.getBalance());
     }
 
     @Test
@@ -65,5 +65,18 @@ public class AccountTest {
                         "---------------Deposit 12 : OK----------------\n" +
                         "---------------Deposit 7 : OK----------------\n" +
                         "---------------Withdraw 4 : OK----------------\n"));
+    }
+
+    @Test
+    public void testThatOverdraftFails() {
+        TestingPrinter printer = new TestingPrinter();
+        Account account = new Account(printer);
+
+        account.withdrawMoney(new Withdrawal(new Amount(400)));
+        account.printTransactions();
+
+        printer.assertHasLines(new Lines(
+                "---------------Transactions----------------\n" +
+                "---------------Withdraw 4 : FAIL----------------\n"));
     }
 }

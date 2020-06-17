@@ -9,8 +9,8 @@ public class Deposit implements Transaction {
     }
 
     @Override
-    public Amount execute(Amount balance) {
-        return amount.add(balance);
+    public Balance execute(Balance balance) {
+        return balance.add(amount);
     }
 
     @Override

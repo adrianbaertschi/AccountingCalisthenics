@@ -17,10 +17,11 @@ public class Account {
 
     public void withdrawMoney(Withdrawal withdrawal) {
         transactions.add(withdrawal);
+        getBalance().verifyTransaction(withdrawal);
     }
 
-    public Amount getBalance() {
-        Amount finalAmount = new Amount(0);
+    public Balance getBalance() {
+        Balance finalAmount = new Balance(0);
         for (Transaction transaction : transactions) {
             finalAmount = transaction.execute(finalAmount);
         }
